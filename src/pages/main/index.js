@@ -7,7 +7,7 @@ import "../acima/styles.css";
 
 export default function Main() {
     return (
-        <div>
+        <div className="page-home">
             <Card className="card-home">
                 <CardContent className="tittle-card">
                     <h1>Escolha o carrinho de compra</h1>
