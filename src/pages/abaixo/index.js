@@ -1,32 +1,30 @@
 import React, { useState, useEffect } from "react";
-import "../home/styles.css";
+import "./styles.css";
 import CardProducts from "../../components/cardProducts";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
+import axios from "axios";
 
-export default function Home() {
-    const [abaixo, setAbaixo] = useState([]);
-    // const [acima, setAcima] = useState([]);
+export default function Abaixo() {
+    const [data, setData] = useState([]);
+    const [price, setPrice] = useState([]);
+   
+    useEffect( ( ) => {
+        axios('./abaixo.json').then(response => {
+            const { data } = response;
+            const item = data.items
+            setData(data)
+            setPrice(item
+                        .map((item) => item.sellingPrice * item.quantity)
+                        .reduce((total, price) => total + price));
+            return data
+        }).catch((error) => {
+            console.log(error);
+        });
+    }, [])
 
-    const getAbaixo = async () => {
-        const res = await fetch("./abaixo.json");
-        const abaixo = await res.json();
-        setAbaixo(abaixo);
-    };
-
-    useEffect(() => {
-        getAbaixo();
-        return JSON.stringify(abaixo);
-    }, []);
-
-    const item = abaixo?.items;
-
-    const price = item
-        .map((item) => item.sellingPrice * item.quantity)
-        .reduce((total, price) => total + price);
-
-    const totalPrice = price / 100;
+    const totalPrice = price/ 100;
     const totalPriceBRL = totalPrice.toLocaleString("pt-br", {
         style: "currency",
         currency: "BRL",
@@ -53,14 +51,10 @@ export default function Home() {
                         <hr width="100%" align=" right noshade" />
                     </CardContent>
                     <CardContent>
-                        {console.log(
-                            totalPrice,
-                            "total price !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-                        )}
-                        <CardProducts data={abaixo} className="prod-card" />
+                        <CardProducts data={data} className="prod-card" />
                         <hr width="100%" align=" right noshade" />
                         <h1>Total: {totalPriceBRL} </h1>
-                        {isFree}
+                        {isFree()}
                         <hr width="100%" align=" right noshade" />
                         <div id="btn">
                             <Button variant="contained" className="btn-buy">

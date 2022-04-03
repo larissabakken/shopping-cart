@@ -20,7 +20,7 @@ export default function RecipeReviewCard({ data }) {
                         <div className="text-card" key={i}>
                             <h3>{item.name}</h3>
                             <p>Preço {(item.price/100).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}</p>
-                            <h4>Valor cobrado {item.sellingPrice/100}</h4>
+                            <h4>Valor cobrado {(item.sellingPrice/100).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}</h4>
                             <p>Quantidade: {item.quantity}</p>
                             <h6>Valor total: {(item.quantity *(item.sellingPrice/100)).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}) }</h6>
                         </div>
