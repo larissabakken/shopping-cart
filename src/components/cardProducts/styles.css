@@ -1,0 +1,21 @@
+.card{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.img-card{
+    display: inline-block;
+    border: 3px solid #666a6e;
+    box-shadow: 7px 7px 13px 0px rgba(50, 50, 50, 0.22);
+    margin-right: 20px ;
+}
+
+.image{
+    width: 150px;
+    padding: 5px;
+}
+
+.text-card{
+    display: inline-block;
+}

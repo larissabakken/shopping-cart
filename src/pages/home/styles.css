@@ -1,16 +1,21 @@
-.card-courses{
-   margin-bottom: 190px;
+.page-home{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.card-log{
-    width: 100%;
-    background-color: #21212185;
+.card-home{
+    border-radius: 25px !important;
+    min-width: 800px !important;
+    max-width: 1000px !important;
+    margin-top: 100px;
+}
+
+.tittle-card{
     text-align: center;
-    padding-top: 30px;
-    padding-bottom: 30px;
 }
 
-.img-logo{
-    height: 70px;
-    margin-right: 70px;
+.btn-buy{
+    height: 60px !important;
+    font-size: 30px !important;
 }
